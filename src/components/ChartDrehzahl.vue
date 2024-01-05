@@ -6,8 +6,11 @@
 
 <script>
 import Chart from 'chart.js/auto';
-import 'chartjs-plugin-zoom';
+// import 'chartjs-plugin-zoom';
+import zoomPlugin from 'chartjs-plugin-zoom';
 import 'hammerjs';
+
+Chart.register(zoomPlugin);
 
 export default {
   mounted() {
@@ -49,19 +52,30 @@ export default {
             }
           },
           plugins: {
+            // zoom: {
+            //   pan: {
+            //     enabled: true,
+            //     mode: 'x',
+            //     threshold: 10,
+            //   },
+            //   zoom: {
+            //     mode: 'xy',
+            //     overScaleMode: 'xy',
+            //     wheel: {
+            //       enabled: true,
+            //       speed: 0.1,
+            //     }
+            //   }
+            // }
             zoom: {
-              pan: {
-                enabled: true,
-                mode: 'x',
-                threshold: 10,
-              },
               zoom: {
-                mode: 'xy',
-                overScaleMode: 'xy',
                 wheel: {
                   enabled: true,
-                  speed: 0.1,
-                }
+                },
+                pinch: {
+                  enabled: true
+                },
+                mode: 'xy',
               }
             }
           }
